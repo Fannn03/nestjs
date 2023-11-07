@@ -1,7 +1,14 @@
-import { Controller } from '@nestjs/common';
-import { TitlesService } from './titles.service';
+import { Controller, Get, Req, Res} from '@nestjs/common';
+import { Request, Response } from 'express';
 
 @Controller('titles')
 export class TitlesController {
-  constructor(private readonly titlesService: TitlesService) {}
+  @Get()
+  async findAll(@Req() req: Request, @Res() res: Response) {
+    return res.json({
+      code: 200,
+      result: 'success',
+      message: 'success get titles data'
+    })
+  }
 }
