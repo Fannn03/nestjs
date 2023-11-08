@@ -5,11 +5,10 @@ import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TitlesModule } from './titles/titles.module';
-import { Titles } from './titles/titles.entities';
+import { Titles } from './titles/entities/titles.entities';
 
 @Module({
   imports: [
-    TitlesModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -20,7 +19,8 @@ import { Titles } from './titles/titles.entities';
       database: process.env.DB_DATABASE,
       entities: [Titles],
       synchronize: true
-    })
+    }),
+    TitlesModule
   ],
   controllers: [AppController],
   providers: [AppService],
