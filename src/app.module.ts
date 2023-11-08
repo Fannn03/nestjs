@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TitlesModule } from './titles/titles.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { TitlesModule } from './titles/titles.module';
+import { Titles } from './titles/titles.entities';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { DataSource } from 'typeorm';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [],
+      entities: [Titles],
       synchronize: true
     })
   ],
