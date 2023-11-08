@@ -5,7 +5,7 @@ import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TitlesModule } from './titles/titles.module';
-import { Titles } from './titles/entities/titles.entities';
+import { Title } from './titles/entities/titles.entities';
 
 @Module({
   imports: [
@@ -17,7 +17,9 @@ import { Titles } from './titles/entities/titles.entities';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Titles],
+      entities: [
+        Title
+      ],
       synchronize: true
     }),
     TitlesModule
